@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Pacific Hotel - Thank You</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <header class="tm-header">
+        <img class="tm-logo" src="/static/Majestic_Hotel_hd.png" alt="Pacific Hotel">
+        <nav class="tm-nav">
+       <div>
+            <ul>
+                <li class="tm-list"><a href="index.html">Home</a></li>
+                <li class="tm-list"><a href="explore.html">Explore</a></li>
+                <li class="tm-list"><a href="rooms.html">Rooms</a></li>
+                <li class="tm-list"><a href="bb.html">Booking</a></li>
+                <li><a href="new.html">My Bookings</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <!-- Admin Controls Tab -->
+                {% if request.user.is_authenticated and request.user.is_staff %}
+                <li class="tm-list"><a href="/admin/">Admin Controls</a></li>
+                {% endif %}
+                <li><a href="{% url 'login:logout' %}">Log Out</a></li>
+            </ul>    
+            </div>
+        </nav>
+    </header>
+
+    <section class="tm-main">
+        <p>Thank you for showing interest! We will contact you shortly.</p>
+    </section>
+
+    <footer class="tm-footer">
+        <div class="tm-us">
+        <p class="bold">About Us</p>
+        <p>We are a part of chain of luxury hotels 
+            which extends all over the world. We 
+            provide a luxorious stay with various value
+            added and free services which will make
+            you visit us over and over again.</p>    
+        </div>
+       
+        <div class="tm-address">
+        <p class="bold">Address</p>
+        <p>
+            350/E Gomti Nagar, Delhi-432500 <br>
+            Phone: (+91) 9898958585 <br>
+            Email: pacific@info.com</p>    
+        </div>
+        <br/>
+    <div class="tm-media">
+        <a href="#"> <img src="/static/fb.png"></a>
+        <a href="#"> <img src="/static/G.png"> </a>
+        <a href="#"> <img src="/static/twittr.png"> </a>
+        <a href="#">  <img src="/static/insta.png"> </a>
+        
+        </div>
+    </footer>
+</body>
+</html>

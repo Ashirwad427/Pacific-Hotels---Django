@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> New - Pacific Hotel</title>
+     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script type="text/javascript" src="{% static "js/slick.js" %}"></script>
+     <script type="text/javascript" src="{% static "js/jquery.scrollUp.js" %}"></script>
+  
+    
+    <link rel="stylesheet" type="text/css" href="{% static "css/table.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/slick.css" %}">
+
+    
+<!--    <link rel="stylesheet" type="text/css" href="css/slick-theme.css">-->
+
+  
+         <script type="text/javascript" src="{% static "js/demo.js" %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    </head>
+    
+<body >  
+    <header class="tm-header">
+        <img class="tm-logo" src="/static/Majestic_Hotel_hd.png" alt="Pacific Hotel">
+        <nav class="tm-nav" >
+       <div>
+            <ul>
+                <li class="tm-list"><a href="index.html">Home</a></li>
+                <li class="tm-list"><a href="explore.html">Explore </a></li>
+                <li class="tm-list"><a href="rooms.html">Rooms</a></li>
+                <li class="tm-list"><a href="bb.html">Booking</a></li>
+                <li><a href="new.html">My Bookings</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <!-- Admin Controls Tab -->
+                {% if request.user.is_authenticated and request.user.is_staff %}
+                <li class="tm-list"><a href="/admin/">Admin Controls</a></li>
+                {% endif %}
+                <li><a href="{% url 'login:logout' %}">Log Out</a></li>
+            </ul>    
+            </div>
+        </nav>
+    </header>
+
+    <div>
+        {% if user.is_authenticated and bookings.exists%}
+            <div class='no_booking'>
+                <h2>Your Bookings</h2>
+            </div>
+            <div class="divtable">  
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Room Type</th>
+                        <th scope="col">Number of Rooms</th>
+                        <th scope="col">Number of Guests</th>
+                        <th scope="col">Visiting Dates</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for booking in bookings %}
+                        <tr>
+                            <td>{{ booking.name }}</td>
+                            <td>{{ booking.email }}</td>
+                            <td>{{ booking.room_type }}</td>
+                            <td>{{ booking.number_of_rooms }}</td>
+                            <td>{{ booking.number_of_guests }}</td>
+                            <td>{{ booking.visiting_dates }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% elif user.is_authenticated%}
+        <div class='no_booking'>
+            <h2>You have no Bookings</h2>
+        </div>
+        <section class="tm-makeres">
+            <div class="tm-res">
+               <div class="tm-resbutton">
+                   <a href="bb.html"> <p>Make Reservation</p></a>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+    </div>
+    
+       
+    <footer class="tm-footer">
+        <div class="tm-us">
+        <p class="bold">About Us</p>
+        <p>We are a part of chain of luxury hotels 
+            which extends all over the world. We 
+            provide a luxorious stay with various value
+            added and free services which will make
+            you visit us over and over again.</p>    
+        </div>
+       
+        <div class="tm-address">
+        <p class="bold">Address</p>
+        <p>350/E Gomti Nagar, Delhi-432500
+            Phone : (+91) 9898958585
+            Email : pacific@info.com</p>    
+        </div>
+        <br/>
+    <div class="tm-media">
+        <a href="#"> <img src="/static/fb.png"></a>
+        <a href="#"> <img src="/static/G.png"> </a>
+        <a href="#"> <img src="/static/twittr.png"> </a>
+        <a href="#">  <img src="/static/insta.png"> </a>
+        
+    </div>
+    </footer>
+</body>
+</html>

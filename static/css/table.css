@@ -1,0 +1,32 @@
+.divtable{
+    background: #211f17;
+    display: flex;
+}
+
+.table{
+    font-size: x-large;
+    background: white;
+    text-align: center;
+    margin: 30px auto 5px auto;
+}
+tr:hover {background-color: coral;}
+th{
+    background-color: #6EACDA;
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+td{
+    color: white;
+    background-color: #211f17;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.no_booking{
+    font-size: xx-large;
+    text-align: center;
+    background-color: #211f17;
+    color: white;
+}
