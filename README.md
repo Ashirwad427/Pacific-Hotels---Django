@@ -47,7 +47,7 @@ Verify using:
     python manage.py migrate
 
 4. **Run Live Server**
-    Run this command on the same terminal. Make sure to keep the root directory as outer 'HELLO'- project folder which contains apps,static folder,manage.py and templates folder.
+    Run this command on the same terminal. Make sure to keep the root directory as outer 'Pacific-Hotels---Django-main'- project folder which contains apps,static folder,manage.py and templates folder.
 
     python manage.py runserver
 
